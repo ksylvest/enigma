@@ -1,47 +1,70 @@
 module Enigma
   class Rotor
-    attr_accessor :mappings
-    attr_accessor :position
-    attr_accessor :default
-    attr_accessor :notches
+
+    ALPHABET = %w(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z).freeze
 
     module Mappings
-      DEFAULT = %w(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)
-      A = %w(D M T W S I L R U Y Q N K F E J C A Z B P G X O H V)
-      B = %w(H Q Z G P J T M O B L N C I F D Y A W V E U S R K X)
-      C = %w(U Q N T L S Z F M R E H D P X K I B V Y G J C W O A)
+      DEFAULT = ALPHABET
+      A = %w(E K M F L G D Q V Z N T O W Y H X U S P A I B R C J).freeze
+      B = %w(A J D K S I R U X B L H W T M C Q G Z N P Y F V O E).freeze
+      C = %w(B D F H J L C P R T X V Z N Y E I W G A K M U S Q O).freeze
     end
 
-    module Notches
+    module Turnover
       DEFAULT = 0
-      A = 1
-      B = 2
-      C = 3
+      A = Mappings::A.index('M')
+      B = Mappings::B.index('C')
+      C = Mappings::C.index('K')
     end
 
-    def initialize(mappings: Mappings::DEFAULT, notches: Notches::DEFAULT)
+    module Position
+      DEFAULT = 0
+    end
+
+    module Offset
+      DEFAULT = 0
+    end
+
+    attr_accessor :mappings
+    attr_accessor :turnover
+    attr_accessor :position
+    attr_accessor :offset
+
+    def initialize(mappings: Mappings::DEFAULT, turnover: Turnover::DEFAULT, position: Position::DEFAULT)
       self.mappings = mappings
-      self.notches = notches
+      self.turnover = turnover
+      self.position = position
+      reset!
     end
 
     def rotate
-    
+      self.offset = self.offset.next % ALPHABET.length
+    end
+
+    def turnover?
+      !!(self.position + self.offset + self.turnover % ALPHABET.length)
     end
 
     def map(letter)
-      self.mappings[ALPHABET.index(letter)]
+      return letter unless ALPHABET.include?(letter)
+
+      self.mappings[(ALPHABET.index(letter) + self.position) % ALPHABET.length]
+    end
+
+    def unmap(letter)
+      return letter unless ALPHABET.include?(letter)
+
+      return ALPHABET[(self.mappings.index(letter) + self.position) % ALPHABET.length]
     end
 
     def reset!
-      self.position = self.default
+      self.offset = Offset::DEFAULT
     end
 
-    ALPHABET = %w(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)
-
     ROTORS = [
-      self.new(mappings: Mappings::A, notches: Notches::A),
-      self.new(mappings: Mappings::B, notches: Notches::B),
-      self.new(mappings: Mappings::C, notches: Notches::C),
+      new(mappings: Mappings::A, turnover: Turnover::A),
+      new(mappings: Mappings::B, turnover: Turnover::B),
+      new(mappings: Mappings::C, turnover: Turnover::C),
     ]
 
   end

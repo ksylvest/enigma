@@ -2,10 +2,12 @@ require 'enigma'
 
 describe Enigma do
 
-  let (:machine) { Enigma::Machine.new }
+  let (:enigma) { Engima }
 
-  it "" do
-    expect(machine.convert("TURING")).to eql("TURING")
+  describe ".convert" do
+    it "converts a string" do
+      expect(Enigma.convert('TURING')).to_not eql('TURING')
+    end
   end
 
 end

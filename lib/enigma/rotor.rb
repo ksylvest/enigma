@@ -12,9 +12,9 @@ module Enigma
 
     module Turnover
       DEFAULT = 0
-      A = Mappings::A.index('M')
-      B = Mappings::B.index('C')
-      C = Mappings::C.index('K')
+      A = Mappings::A.index('Y')
+      B = Mappings::B.index('M')
+      C = Mappings::C.index('D')
     end
 
     module Position
@@ -39,22 +39,23 @@ module Enigma
 
     def rotate
       self.offset = self.offset.next % ALPHABET.length
+      return self
     end
 
     def turnover?
-      !!(self.position + self.offset + self.turnover % ALPHABET.length)
+      ((self.position + self.offset) % ALPHABET.length).eql?(self.turnover)
     end
 
-    def map(letter)
+    def forward(letter)
       return letter unless ALPHABET.include?(letter)
 
-      self.mappings[(ALPHABET.index(letter) + self.position) % ALPHABET.length]
+      self.mappings[(ALPHABET.index(letter) + self.position + self.offset) % ALPHABET.length]
     end
 
-    def unmap(letter)
+    def reverse(letter)
       return letter unless ALPHABET.include?(letter)
 
-      return ALPHABET[(self.mappings.index(letter) + self.position) % ALPHABET.length]
+      return ALPHABET[(self.mappings.index(letter) + self.position - self.offset) % ALPHABET.length]
     end
 
     def reset!

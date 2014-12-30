@@ -30,13 +30,13 @@ module Enigma
       rotate
 
       self.rotors.each do |rotor|
-        character = rotor.map(character)
+        character = rotor.forward(character)
       end
 
       character = self.reflector.reflect(character)
 
       self.rotors.reverse.each do |rotor|
-        character = rotor.unmap(character)
+        character = rotor.reverse(character)
       end
 
       return character

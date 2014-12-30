@@ -2,7 +2,7 @@ require 'enigma'
 
 describe Enigma do
 
-  let (:enigma) { Engima }
+  let (:enigma) { Enigma }
 
   describe ".convert" do
     it "converts a string" do

@@ -1,7 +1,3 @@
-begin
-require 'securerandom' 
-rescue LoadError
-end
-
-module Enigma  
-end
+require 'enigma/machine'
+require 'enigma/rotor'
+require 'enigma/plugboard'

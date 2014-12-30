@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Kevin Sylvestre"]
   s.email       = ["kevin@ksylvest.com"]
-  s.homepage    = "http://github.com/ksylvest/enigma"
+  s.homepage    = "https://github.com/ksylvest/enigma"
   s.summary     = "An enigma machine"
   s.description = "Enigma is a simulation of a physical enigma machine."
   s.files       = Dir.glob("{bin,lib}/**/*") + %w(README.rdoc LICENSE Gemfile)

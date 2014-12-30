@@ -1,16 +1,15 @@
 module Enigma
   class Machine
+    SEPARATOR = ''
 
     attr_accessor :rotors
 
-    def initialize(rotors)
-      self.rotors = rotors || Rotor::ROTORS
+    def initialize(rotors: Rotor::ROTORS)
+      self.rotors = rotors
     end
 
     def convert(string)
-      string.split('').map do |character|
-      
-      end
+      string.split(SEPARATOR).map { |character| character }.join(SEPARATOR)
     end
 
     def reset!

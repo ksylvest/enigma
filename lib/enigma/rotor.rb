@@ -1,6 +1,16 @@
-require 'enigma/alphabet'
-
 module Enigma
+
+  # The engima rotor has two contact points and can transform a letter going
+  # forward or reverse. In addition the rotor supports rotating (offsetting)
+  # and has a turnover point that will change other rotors
+  #
+  # Usage:
+  #
+  #   rotor = Enigma::Rotor.new(mapping: ..., turnover: ..., position: ...)
+  #   rotor.forward('A') # '.'
+  #   rotor.reverse('B') # '.'
+  #   rotor.rotate and return unless rotor.turnover?
+  #
   class Rotor
 
     module Mappings
@@ -66,11 +76,13 @@ module Enigma
       self.offset = Offset::DEFAULT
     end
 
-    ROTORS = [
-      new(mappings: Mappings::A, turnover: Turnover::A),
-      new(mappings: Mappings::B, turnover: Turnover::B),
-      new(mappings: Mappings::C, turnover: Turnover::C),
-    ]
+    def self.rotors
+      [
+        new(mappings: Mappings::A, turnover: Turnover::A),
+        new(mappings: Mappings::B, turnover: Turnover::B),
+        new(mappings: Mappings::C, turnover: Turnover::C),
+      ]
+    end
 
   end
 end

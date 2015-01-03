@@ -1,9 +1,9 @@
-require 'enigma/rotor'
+require 'enigma'
 
-describe Enigma::Reflector do
+describe Enigma::Rotor do
 
   let (:rotor) { Enigma::Rotor.new }
-  let (:rotors) { Enigma::Rotor::ROTORS }
+  let (:rotors) { Enigma::Rotor.rotors }
   let (:alphabet) { Enigma::ALPHABET }
 
   describe "#mapping" do
@@ -43,7 +43,7 @@ describe Enigma::Reflector do
         expect(rotor.forward(letter)).to eql(rotor.forward(letter))
       end
     end
-    
+
     it "maps to a different letter after each rotation going forwards" do
       alphabet.each do |letter|
         expect(rotor.forward(letter)).to_not eql(rotor.rotate.forward(letter))

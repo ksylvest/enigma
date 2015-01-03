@@ -1,4 +1,4 @@
-require 'enigma/cli'
+require 'enigma'
 
 describe Enigma::CLI do
 

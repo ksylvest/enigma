@@ -1,20 +1,21 @@
-require 'enigma/machine'
+require 'enigma'
 
 describe Enigma::Machine do
 
-  let (:string) { 'TURING' }
-  let (:machine) { Enigma::Machine.new }
+  let (:testing) { 'TURING' }
 
   describe "#convert" do
 
     it 'is unique' do
-      a = machine.convert(string)
-      b = machine.convert(string)
+      machine = Enigma::Machine.new
+      a = machine.convert(testing)
+      b = machine.convert(testing)
       expect(a).to_not eql(b)
     end
-  
+
     it 'is distinct' do
-      expect(machine.convert(string)).to_not eql(string)
+      machine = Enigma::Machine.new
+      expect(machine.convert(testing)).to_not eql(testing)
     end
 
   end
@@ -22,13 +23,19 @@ describe Enigma::Machine do
   describe "#reset!" do
 
     it 'is resetable' do
-      a = machine.reset!.convert(string)
-      b = machine.reset!.convert(string)
+      machine = Enigma::Machine.new
+      a = machine.convert(testing)
+      machine.reset!
+      b = machine.convert(testing)
       expect(a).to eql(b)
     end
 
-    it 'can decrypt an encryption' do
-      expect(machine.reset!.convert(machine.convert(string))).to eql(string)
+    it 'can encrypt then decrypt' do
+      machine = Enigma::Machine.new
+      encrypt = machine.convert(testing)
+      machine.reset!
+      decrypt = machine.convert(encrypt)
+      expect(decrypt).to eql(testing)
     end
 
   end

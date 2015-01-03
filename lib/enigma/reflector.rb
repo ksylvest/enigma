@@ -1,6 +1,17 @@
-require 'enigma/alphabet'
-
 module Enigma
+
+  # The engima reflector is used to scramble the input. It takes input,
+  # performs a substituion, then returns output. The scramling functions
+  # such that if 'A' maps to 'B' then 'B' maps to 'A' (thus allowing for both
+  # encrypting and decrypting).
+  #
+  # Usage:
+  #
+  #   reflector = Enigma::Reflector.new
+  #   machine.reflect('A') # 'B'
+  #   machine.reflect('B') # 'A'
+  #   ...
+  #
   class Reflector
 
     module Mappings

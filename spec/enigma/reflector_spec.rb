@@ -1,4 +1,4 @@
-require 'enigma/reflector'
+require 'enigma'
 
 describe Enigma::Reflector do
 

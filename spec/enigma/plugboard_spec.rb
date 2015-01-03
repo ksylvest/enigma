@@ -1,4 +1,4 @@
-require 'enigma/plugboard'
+require 'enigma'
 
 describe Enigma::Plugboard do
 

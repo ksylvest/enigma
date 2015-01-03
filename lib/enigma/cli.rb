@@ -1,6 +1,15 @@
 require 'slop'
 
 module Enigma
+
+  # A wrapper for command line interaction that encompasses option parsing,
+  # version, help and execution. This class is instantiated from the binary.
+  #
+  # Usage:
+  #
+  #   cli = Enigma::CLI.new
+  #   cli.parse()
+  #
   class CLI
 
     attr_accessor :machine
@@ -29,7 +38,7 @@ module Enigma
 
       end
 
-      convert
+      execute
     end
 
   private
@@ -42,7 +51,7 @@ module Enigma
       self.output.puts(::Enigma::VERSION)
     end
 
-    def convert
+    def execute
       self.output.puts(self.machine.convert(self.input.gets.chomp))
     end
 

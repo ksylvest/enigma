@@ -1,16 +1,12 @@
 = Enigma
 
-Enigma
+Enigma is a simple Ruby library developer to learn how an Enigma machine works. It simulates the rotors, reflector and plugboard that composed an Enigma machine and provides a simple CLI for experimenting.
 
 == Requirements
 
 The gem is tested with:
 
 * Ruby 2.2.0
-
-== Installation
-
-  gem install enigma
 
 == Copyright
 

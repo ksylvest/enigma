@@ -25,7 +25,7 @@ module Enigma
     end
 
     def convert(string)
-      string.split(SEPARATOR).map { |character| process(character) }.join(SEPARATOR)
+      format(string).split(SEPARATOR).map { |character| process(character) }.join(SEPARATOR)
     end
 
     def reset!
@@ -46,6 +46,10 @@ module Enigma
       character = plug(character)
 
       return character
+    end
+
+    def format(string)
+      string.upcase
     end
 
     def plug(character)

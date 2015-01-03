@@ -1,6 +1,20 @@
 = Enigma
 
-Enigma is a simple Ruby library developer to learn how an Enigma machine works. It simulates the rotors, reflector and plugboard that composed an Enigma machine and provides a simple CLI for experimenting.
+Enigma is a simple Ruby library created to explain Enigma machines works. It simulates the rotors, reflector and plugboard that compose Enigma machines and provides a simple CLI for experimenting.
+
+== Installation
+
+    gem install enigma
+
+== Usage
+
+    enigma
+    ENIGMA
+    CKASLQ
+
+    enigma
+    CKASLQ
+    TURING
 
 == Requirements
 

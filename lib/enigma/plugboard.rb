@@ -1,7 +1,7 @@
 module Enigma
 
-  # The engima plugboard is used to swap letters before and after the rotors 
-  # execute. It provided an additional layer of security increasing the 
+  # The engima plugboard is used to swap letters before and after the rotors
+  # execute. It provided an additional layer of security increasing the
   # permutations.
   #
   # Usage:

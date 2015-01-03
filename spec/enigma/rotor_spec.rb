@@ -1,4 +1,4 @@
-require 'enigma'
+require 'enigma/rotor'
 
 describe Enigma::Reflector do
 

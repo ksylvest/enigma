@@ -1,4 +1,4 @@
-require 'enigma'
+require 'enigma/machine'
 
 describe Enigma::Machine do
 

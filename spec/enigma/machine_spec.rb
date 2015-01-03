@@ -2,7 +2,7 @@ require 'enigma'
 
 describe Enigma::Machine do
 
-  let (:testing) { 'TURING' }
+  let (:testing) { (0...256).map { Enigma::ALPHABET[rand(Enigma::ALPHABET.length)] }.join }
 
   describe "#convert" do
 

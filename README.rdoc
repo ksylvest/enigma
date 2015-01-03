@@ -4,21 +4,22 @@ Enigma is a simple Ruby library created to explain Enigma machines works. It sim
 
 == Installation
 
-    gem install enigma
+    git clone ...
+    cd enigma
 
 == Usage
 
-    enigma
+    bundle exec enigma
     ENIGMA
     CKASLQ
 
-    enigma
+    bundle exec enigma
     CKASLQ
     TURING
 
 == Requirements
 
-The gem is tested with:
+The library is tested with:
 
 * Ruby 2.2.0
 

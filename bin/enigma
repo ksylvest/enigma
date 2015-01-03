@@ -2,5 +2,6 @@
 
 require 'enigma'
 
-Enigma::CLI.new
+cli = Enigma::CLI.new
+cli.parse()
 

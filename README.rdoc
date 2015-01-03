@@ -1,0 +1,17 @@
+= Enigma
+
+Enigma
+
+== Requirements
+
+The gem is tested with:
+
+* Ruby 2.2.0
+
+== Installation
+
+  gem install enigma
+
+== Copyright
+
+Copyright (c) 2014 - 2015 Kevin Sylvestre. See LICENSE for details.

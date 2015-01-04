@@ -1,3 +1,3 @@
 module Enigma
-  ALPHABET = Array('A'..'Z').freeze
+  ALPHABET = Array('A'..'Z')
 end

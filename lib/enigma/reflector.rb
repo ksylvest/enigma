@@ -15,7 +15,7 @@ module Enigma
   class Reflector
 
     module Mappings
-      ENCRYPTED = %w(Y R U H Q S L D P X N G O K M I E B F Z C W V J A T).freeze
+      ENCRYPTED = %w(Y R U H Q S L D P X N G O K M I E B F Z C W V J A T)
     end
 
     module Position

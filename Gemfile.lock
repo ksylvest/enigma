@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    enigma (0.0.1)
+    enigma (0.0.2)
       slop
 
 GEM

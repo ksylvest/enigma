@@ -23,6 +23,13 @@ The library is tested with:
 
 * Ruby 2.2.0
 
+== Status
+
+{<img src="https://img.shields.io/gemnasium/ksylvest/enigma.svg" />}[https://gemnasium.com/ksylvest/enigma]
+{<img src="https://img.shields.io/travis/ksylvest/enigma.svg" />}[https://travisci.org/ksylvest/enigma]
+{<img src="https://img.shields.io/coveralls/ksylvest/enigma.svg" />}[https://coveralls.io/r/ksylvest/enigma]
+{<img src="https://img.shields.io/codeclimate/github/ksylvest/enigma.svg" />}[https://codeclimate.com/github/ksylvest/enigma]
+
 == Copyright
 
 Copyright (c) 2014 - 2015 Kevin Sylvestre. See LICENSE for details.

@@ -1,4 +1,4 @@
-require 'enigma'
+require 'spec_helper'
 
 describe Enigma::Machine do
 

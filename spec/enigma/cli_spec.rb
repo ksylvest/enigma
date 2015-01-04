@@ -10,8 +10,40 @@ describe Enigma::CLI do
 
     it "stubs to slop" do
       expect(Slop).to receive(:parse)
-      expect(input).to receive(:gets) { "Turing" }
       expect(output).to receive(:puts)
+      expect(input).to receive(:gets) { "Turing" }
+      cli.parse()
+    end
+
+    it "supports '-v' or '--version' flag" do
+      options = double('options')
+      expect(output).to receive(:puts)
+      expect(options).to receive(:banner=)
+
+      allow(options).to receive(:on) do |s, l, &block|
+        block.call if s.eql?('-v') or s.eql?('--version')
+      end
+
+      expect(Slop).to receive(:parse) do |&block|
+        block.call(options)
+      end
+
+      cli.parse()
+    end
+
+    it "supports '-h' or '--help' flag" do
+      options = double('options')
+      expect(output).to receive(:puts)
+      expect(options).to receive(:banner=)
+
+      allow(options).to receive(:on) do
+        |s, l, &block| block.call if s.eql?('-h') or s.eql?('--help')
+      end
+
+      expect(Slop).to receive(:parse) do |&block|
+        block.call(options)
+      end
+
       cli.parse()
     end
 

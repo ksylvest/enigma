@@ -6,12 +6,12 @@ describe Enigma::CLI do
   let (:output) { double('output') }
   let (:cli) { Enigma::CLI.new(input: input, output: output) }
 
-  describe "#initialize" do
+  describe "#execute" do
 
     it "converts input to output using the streams" do
       expect(input).to receive(:gets) { "Turing" }
       expect(output).to receive(:puts)
-      cli.parse()
+      cli.execute()
     end
 
   end

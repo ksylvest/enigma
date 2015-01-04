@@ -41,6 +41,10 @@ module Enigma
       execute
     end
 
+    def execute
+      self.output.puts(self.machine.convert(self.input.gets.chomp))
+    end
+
   private
 
     def help(options = {})
@@ -49,10 +53,6 @@ module Enigma
 
     def version(options = {})
       self.output.puts(::Enigma::VERSION)
-    end
-
-    def execute
-      self.output.puts(self.machine.convert(self.input.gets.chomp))
     end
 
   end

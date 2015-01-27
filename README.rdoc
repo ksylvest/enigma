@@ -15,7 +15,7 @@ Enigma is a simple Ruby library created to explain Enigma machines works. It sim
 
     bundle exec enigma
     CKASLQ
-    TURING
+    ENIGMA
 
 == Requirements
 

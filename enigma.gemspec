@@ -13,9 +13,10 @@ Gem::Specification.new do |s|
   s.summary     = "An enigma machine"
   s.description = "Enigma is a simulation of a physical enigma machine."
   s.files       = Dir.glob("{bin,lib}/**/*") + %w(README.rdoc LICENSE Gemfile)
-  
+
   s.add_dependency "slop"
+  s.add_development_dependency "bundler"
+  s.add_development_dependency "coveralls"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
-  s.add_development_dependency "bundler"
 end

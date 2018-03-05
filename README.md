@@ -34,4 +34,4 @@ The library is tested with:
 
 ## Copyright
 
-Copyright (c) 2014 - 2016 [Kevin Sylvestre](https://ksylvest.com). See LICENSE for details.
+Copyright (c) 2014 - 2018 [Kevin Sylvestre](https://ksylvest.com). See LICENSE for details.

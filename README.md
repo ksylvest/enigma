@@ -27,8 +27,8 @@ The library is tested with:
 
 [![CircleCI](https://circleci.com/gh/ksylvest/enigma.svg?style=svg)](https://circleci.com/gh/ksylvest/enigma)
 
-[![CodeClimate (Maintainability)](https://api.codeclimate.com/v1/badges/391d09bf5fb4a6be19e2/maintainability)](https://codeclimate.com/github/ksylvest/enigma/maintainability)
-[![CodeClimate (Test Coverage)](https://api.codeclimate.com/v1/badges/391d09bf5fb4a6be19e2/test_coverage)](https://codeclimate.com/github/ksylvest/enigma/test_coverage)
+[![CodeClimate (Maintainability)](https://api.codeclimate.com/v1/badges/eca09a160dda5126110b/maintainability)](https://codeclimate.com/github/ksylvest/enigma/maintainability)
+[![CodeClimate (Test Coverage)](https://api.codeclimate.com/v1/badges/eca09a160dda5126110b/test_coverage)](https://codeclimate.com/github/ksylvest/enigma/test_coverage)
 
 [![Gemnasium](https://gemnasium.com/badges/github.com/ksylvest/enigma.svg)](https://gemnasium.com/github.com/ksylvest/enigma)
 

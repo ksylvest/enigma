@@ -27,7 +27,7 @@ describe Enigma::CLI do
     it 'defaults to mapping input to output' do
       expect(input).to receive(:gets) { 'ENIGMA' }
       expect(output).to receive(:puts).with('AJMKDD')
-      cli.parse
+      cli.parse([])
     end
   end
 end

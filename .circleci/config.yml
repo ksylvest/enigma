@@ -1,0 +1,61 @@
+version: 2
+jobs:
+  build:
+    docker:
+      -
+        image: circleci/ruby:2.5.0
+        environment:
+          BUNDLE_JOBS: 4
+          BUNDLE_RETRY: 4
+          BUNDLE_PATH: vendor/bundle
+
+    steps:
+      - checkout
+
+      # bundler
+      -
+        type: cache-restore
+        key: bundle-{{ checksum "Gemfile.lock" }}
+      -
+        run: bundle check || bundle install
+      -
+        type: cache-save
+        key: bundle-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      # rubocop
+      -
+        type: shell
+        command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
+
+      # rspec
+      -
+        type: shell
+        command: bundle exec rspec --format progress --format RspecJunitFormatter --out tmp/rspec/rspec.xml
+
+      # results
+      -
+        type: test-results-store
+        path: tmp/rspec
+
+      # artifacts
+      -
+        type: artifacts-store
+        path: coverage
+        destination: coverage
+
+      # artifacts
+      -
+        type: artifacts-store
+        path: tmp/rubocop.html
+        destination: rubocop.html
+
+      # codeclimate
+      -
+        run:
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter format-coverage -t simplecov coverage/.resultset.json
+            ./cc-test-reporter upload-coverage

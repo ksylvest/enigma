@@ -1,0 +1,37 @@
+# Enigma
+
+Enigma is a simple Ruby library created to explain Enigma machines works. It simulates the rotors, reflector and plugboard that compose Enigma machines and provides a simple CLI for experimenting.
+
+## Installation
+
+    git clone ...
+    cd enigma
+
+## Usage
+
+    bundle exec enigma
+    ENIGMA
+    CKASLQ
+
+    bundle exec enigma
+    CKASLQ
+    ENIGMA
+
+## Requirements
+
+The library is tested with:
+
+* Ruby 2.5.0
+
+## Status
+
+[![CircleCI](https://circleci.com/gh/ksylvest/enigma.svg?style=svg)](https://circleci.com/gh/ksylvest/enigma)
+
+[![CodeClimate (Maintainability)](https://api.codeclimate.com/v1/badges/391d09bf5fb4a6be19e2/maintainability)](https://codeclimate.com/github/ksylvest/enigma/maintainability)
+[![CodeClimate (Test Coverage)](https://api.codeclimate.com/v1/badges/391d09bf5fb4a6be19e2/test_coverage)](https://codeclimate.com/github/ksylvest/enigma/test_coverage)
+
+[![Gemnasium](https://gemnasium.com/badges/github.com/ksylvest/enigma.svg)](https://gemnasium.com/github.com/ksylvest/enigma)
+
+## Copyright
+
+Copyright (c) 2014 - 2016 [Kevin Sylvestre](https://ksylvest.com). See LICENSE for details.

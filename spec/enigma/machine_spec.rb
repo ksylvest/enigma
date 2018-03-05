@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Enigma::Machine do
 
-  let (:testing) { (0...256).map { Enigma::ALPHABET[rand(Enigma::ALPHABET.length)] }.join }
+  let(:testing) { (0...256).map { Enigma::ALPHABET[rand(Enigma::ALPHABET.length)] }.join }
 
-  describe "#convert" do
+  describe '#convert' do
 
     it 'is unique' do
       machine = Enigma::Machine.new
@@ -20,7 +20,7 @@ describe Enigma::Machine do
 
   end
 
-  describe "#reset!" do
+  describe '#reset!' do
 
     it 'is resetable' do
       machine = Enigma::Machine.new

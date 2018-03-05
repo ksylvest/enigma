@@ -12,16 +12,12 @@ module Enigma
   #   machine.reset!
   #   machine.convert('.....') # 'TURING'
   class Machine
-    SEPARATOR = ''
-
-    attr_accessor :rotors
-    attr_accessor :reflector
-    attr_accessor :plugboard
+    SEPARATOR = ''.freeze
 
     def initialize(rotors: Rotor.rotors, reflector: Reflector.new, plugboard: Plugboard.new)
-      self.rotors = rotors
-      self.reflector = reflector
-      self.plugboard = plugboard
+      @rotors = rotors
+      @reflector = reflector
+      @plugboard = plugboard
     end
 
     def convert(string)
@@ -29,9 +25,7 @@ module Enigma
     end
 
     def reset!
-      self.rotors.each do |rotor|
-        rotor.reset!
-      end
+      @rotors.each(&:reset!)
     end
 
   private
@@ -45,7 +39,7 @@ module Enigma
       character = reverse(character)
       character = plug(character)
 
-      return character
+      character
     end
 
     def format(string)
@@ -53,27 +47,27 @@ module Enigma
     end
 
     def plug(character)
-      self.plugboard.swap(character)
+      @plugboard.swap(character)
     end
 
     def reflect(character)
-      self.reflector.reflect(character)
+      @reflector.reflect(character)
     end
 
     def forward(character)
-      self.rotors.inject(character) do |memo, rotor|
+      @rotors.inject(character) do |memo, rotor|
         rotor.forward(memo)
       end
     end
 
     def reverse(character)
-      self.rotors.reverse.inject(character) do |memo, rotor|
+      @rotors.reverse.inject(character) do |memo, rotor|
         rotor.reverse(memo)
       end
     end
 
     def rotate
-      self.rotors.each do |rotor|
+      @rotors.each do |rotor|
         rotor.rotate
         break unless rotor.turnover?
       end

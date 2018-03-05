@@ -13,19 +13,17 @@ module Enigma
   #
   class Plugboard
 
-    attr_accessor :mappings
-
-    def initialize()
-      self.mappings = {}
+    def initialize
+      @mappings = {}
     end
 
-    def plug(a,b)
-      self.mappings[a] = b
-      self.mappings[b] = a
+    def plug(character_a, character_b)
+      @mappings[character_a] = character_b
+      @mappings[character_b] = character_a
     end
 
     def swap(character)
-      self.mappings[character] || character
+      @mappings[character] || character
     end
 
   end

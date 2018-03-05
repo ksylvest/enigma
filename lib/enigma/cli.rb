@@ -11,48 +11,37 @@ module Enigma
   #   cli.parse()
   #
   class CLI
-
-    attr_accessor :machine
-    attr_accessor :input
-    attr_accessor :output
+    BANNER = 'usage: enigma [options] ...'.freeze
 
     def initialize(input: STDIN, output: STDOUT)
-      self.machine = Machine.new
-      self.input  = input
-      self.output = output
+      @machine = Machine.new
+      @input  = input
+      @output = output
     end
 
-    def parse
-      Slop.parse do |options|
-        options.banner = "usage: enigma [options] ..."
+    def parse(items = ARGV)
+      Slop.parse(items) do |options|
+        options.banner = BANNER
 
-        options.on '-h', '--help' do
-          help(options)
-          return
-        end
-
-        options.on '-v', '--version' do
-          version(options)
-          return
-        end
-
+        options.on('-h', '--help', 'help') { return help(options) }
+        options.on('-v', '--version', 'version') { return version }
       end
 
       execute
     end
 
-    def execute
-      self.output.puts(self.machine.convert(self.input.gets.chomp))
-    end
-
   private
 
-    def help(options = {})
-      self.output.puts(options)
+    def execute
+      @output.puts(@machine.convert(@input.gets.chomp))
     end
 
-    def version(options = {})
-      self.output.puts(::Enigma::VERSION)
+    def help(options = {})
+      @output.puts(String(options))
+    end
+
+    def version
+      @output.puts(::Enigma::VERSION)
     end
 
   end

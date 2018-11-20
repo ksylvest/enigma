@@ -29,6 +29,7 @@ module Enigma
 
     def reflect(letter)
       return letter unless ALPHABET.include?(letter)
+
       ALPHABET[(@mappings.index(letter) + @position) % ALPHABET.length]
     end
 

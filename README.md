@@ -21,16 +21,13 @@ Enigma is a simple Ruby library created to explain Enigma machines works. It sim
 
 The library is tested with:
 
-* Ruby 2.5.0
+* Ruby 2.5.2
 
 ## Status
 
 [![CircleCI](https://circleci.com/gh/ksylvest/enigma.svg?style=svg)](https://circleci.com/gh/ksylvest/enigma)
-
 [![CodeClimate (Maintainability)](https://api.codeclimate.com/v1/badges/eca09a160dda5126110b/maintainability)](https://codeclimate.com/github/ksylvest/enigma/maintainability)
 [![CodeClimate (Test Coverage)](https://api.codeclimate.com/v1/badges/eca09a160dda5126110b/test_coverage)](https://codeclimate.com/github/ksylvest/enigma/test_coverage)
-
-[![Gemnasium](https://gemnasium.com/badges/github.com/ksylvest/enigma.svg)](https://gemnasium.com/github.com/ksylvest/enigma)
 
 ## Copyright
 

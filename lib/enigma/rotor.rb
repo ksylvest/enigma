@@ -53,11 +53,13 @@ module Enigma
 
     def forward(letter)
       return letter unless ALPHABET.include?(letter)
+
       @mappings[(ALPHABET.index(letter) + @position + @offset) % ALPHABET.length]
     end
 
     def reverse(letter)
       return letter unless ALPHABET.include?(letter)
+
       ALPHABET[(@mappings.index(letter) + @position - @offset) % ALPHABET.length]
     end
 

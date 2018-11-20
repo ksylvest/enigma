@@ -27,7 +27,7 @@ describe Enigma::Rotor do
         rotors.each do |rotor|
           result = rotor.forward(result)
         end
-        rotors.reverse.each do |rotor|
+        rotors.reverse_each do |rotor|
           result = rotor.reverse(result)
         end
         expect(result).to eql(letter)

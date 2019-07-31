@@ -15,7 +15,7 @@ module Enigma
 
     def initialize(input: STDIN, output: STDOUT)
       @machine = Machine.new
-      @input  = input
+      @input = input
       @output = output
     end
 

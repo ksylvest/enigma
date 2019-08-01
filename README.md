@@ -17,12 +17,6 @@ Enigma is a simple Ruby library created to explain Enigma machines works. It sim
     CKASLQ
     ENIGMA
 
-## Requirements
-
-The library is tested with:
-
-* Ruby 2.5.2
-
 ## Status
 
 [![CircleCI](https://circleci.com/gh/ksylvest/enigma.svg?style=svg)](https://circleci.com/gh/ksylvest/enigma)
@@ -31,4 +25,4 @@ The library is tested with:
 
 ## Copyright
 
-Copyright (c) 2014 - 2018 [Kevin Sylvestre](https://ksylvest.com). See LICENSE for details.
+Copyright (c) 2014 - 2019 [Kevin Sylvestre](https://ksylvest.com). See LICENSE for details.

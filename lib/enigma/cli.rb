@@ -13,7 +13,7 @@ module Enigma
   class CLI
     BANNER = 'usage: enigma [options] ...'.freeze
 
-    def initialize(input: STDIN, output: STDOUT)
+    def initialize(input: $stdin, output: $stdout)
       @machine = Machine.new
       @input = input
       @output = output

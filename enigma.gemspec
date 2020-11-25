@@ -13,11 +13,13 @@ Gem::Specification.new do |spec|
   spec.description = 'Enigma is a simulation of a physical enigma machine.'
   spec.files       = Dir.glob('{bin,lib}/**/*') + %w[README.md LICENSE Gemfile]
 
+  spec.required_ruby_version = '> 2.5.0'
+
   spec.add_dependency 'slop'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rspec_junit_formatter'
   spec.add_development_dependency 'rubocop'
-  spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'simplecov', '< 0.18'
 end

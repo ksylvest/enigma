@@ -33,13 +33,13 @@ module Enigma
     def process(character)
       rotate
 
-      character = plug(character)
-      character = forward(character)
-      character = reflect(character)
-      character = reverse(character)
-      character = plug(character)
-
-      character
+      [
+        method(:plug),
+        method(:forward),
+        method(:reflect),
+        method(:reverse),
+        method(:plug),
+      ].reduce(character) { |current, operation| operation.call(current) }
     end
 
     def format(string)

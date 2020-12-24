@@ -73,12 +73,11 @@ jobs:
       - store_artifacts:
           path: log
           destination: log
-      -
-        run:
+      - run:
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-            ./cc-test-reporter format-coverage -t simplecov coverage/.resultset.json
+            ./cc-test-reporter format-coverage -t simplecov coverage/coverage.json
             ./cc-test-reporter upload-coverage
 
 workflows:

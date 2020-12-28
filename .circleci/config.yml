@@ -1,50 +1,20 @@
 version: 2.1
 
+orbs:
+  ruby: circleci/ruby@1.1.1
+
 executors:
   default:
     docker:
-      - image: circleci/ruby
-    environment:
-      BUNDLE_JOBS: 4
-      BUNDLE_RETRY: 4
-      BUNDLE_PATH: vendor/bundle
-      BUNDLER_VERSION: 2.1.4
-      RAILS_ENV: test
-      RACK_ENV: test
-      PGHOST: localhost
+      - image: cimg/ruby:3.0.0
 
 jobs:
-  bundle:
-    executor: default
-    steps:
-      - checkout
-      - run: gem install bundler --version "$BUNDLER_VERSION"
-      - restore_cache:
-          keys:
-            - bundler-{{ arch }}-{{ checksum "Gemfile.lock" }}
-      - run: bundle check || bundle install  --clean --deployment
-      - save_cache:
-          key: bundler-{{ arch }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-      - persist_to_workspace:
-          root: .
-          paths:
-            - vendor/bundle
-
   rubocop:
     executor: default
     steps:
       - checkout
-      - attach_workspace:
-          at: .
-      - run: gem install bundler --version "$BUNDLER_VERSION"
-      - run: bundle check || bundle install  --clean --deployment
-      - run:
-          command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
-      - store_artifacts:
-          path: tmp/rubocop.html
-          destination: rubocop.html
+      - ruby/install-deps
+      - ruby/rubocop-check
 
   rspec:
     executor: default
@@ -52,42 +22,17 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: gem install bundler --version "$BUNDLER_VERSION"
-      - run: bundle check || bundle install  --clean --deployment
-      - run:
-          command: |
-            bundle exec rspec \
-              --profile \
-              --format RspecJunitFormatter \
-              --out tmp/results/rspec.xml \
-              --format progress \
-              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
-      - store_test_results:
-          path: tmp/results
-      - store_artifacts:
-          path: coverage
-          destination: coverage
-      - store_artifacts:
-          path: tmp/screenshots
-          destination: screenshots
-      - store_artifacts:
-          path: log
-          destination: log
-      - run:
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-            ./cc-test-reporter format-coverage -t simplecov coverage/coverage.json
-            ./cc-test-reporter upload-coverage
+      - ruby/install-deps
+      - ruby/rspec-test
+      - run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter format-coverage -t simplecov coverage/coverage.json
+          ./cc-test-reporter upload-coverage
 
 workflows:
   version: 2.1
   build:
     jobs:
-      - bundle
-      - rubocop:
-          requires:
-            - bundle
-      - rspec:
-          requires:
-            - bundle
+      - rubocop
+      - rspec

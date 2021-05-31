@@ -50,7 +50,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.2)
-    slop (4.9.0)
+    slop (4.9.1)
     unicode-display_width (2.0.0)
 
 PLATFORMS

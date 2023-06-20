@@ -1,12 +1,12 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.1.1
+  ruby: circleci/ruby@2.0.1
 
 executors:
   default:
     docker:
-      - image: cimg/ruby:3.0.0
+      - image: cimg/ruby:3.2.2
 
 jobs:
   rubocop:

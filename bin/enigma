@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require 'enigma'
+require "enigma"
 
 cli = Enigma::CLI.new
 cli.parse

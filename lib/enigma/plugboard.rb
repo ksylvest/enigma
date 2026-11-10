@@ -1,5 +1,6 @@
-module Enigma
+# frozen_string_literal: true
 
+module Enigma
   # The engima plugboard is used to swap letters before and after the rotors
   # execute. It provided an additional layer of security increasing the
   # permutations.
@@ -12,7 +13,6 @@ module Enigma
   #   ...
   #
   class Plugboard
-
     def initialize
       @mappings = {}
     end
@@ -25,6 +25,5 @@ module Enigma
     def swap(character)
       @mappings[character] || character
     end
-
   end
 end

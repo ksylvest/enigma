@@ -1,5 +1,6 @@
-module Enigma
+# frozen_string_literal: true
 
+module Enigma
   # The machine is composed of a number of rotors, a reflector, a plugboard and
   # can encrypt a regular string or decrypt a converted string. Conversion is
   # run through the same method for enciphering or deciphering as long as the
@@ -12,7 +13,7 @@ module Enigma
   #   machine.reset!
   #   machine.convert('.....') # 'TURING'
   class Machine
-    SEPARATOR = ''.freeze
+    SEPARATOR = ""
 
     def initialize(rotors: Rotor.rotors, reflector: Reflector.new, plugboard: Plugboard.new)
       @rotors = rotors
@@ -72,6 +73,5 @@ module Enigma
         break unless rotor.turnover?
       end
     end
-
   end
 end

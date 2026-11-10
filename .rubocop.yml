@@ -1,45 +1,22 @@
+inherit_gem:
+  rubocop-basic: rubocop.yml
+
+plugins:
+  - rubocop-rake
+  - rubocop-rspec
+
 AllCops:
-  TargetRubyVersion: 2.5
-  Exclude:
-    - Gemfile
-    - Gemfile.lock
-    - vendor/**/*
+  TargetRubyVersion: 4.0.0
+  NewCops: enable
 
-Layout/AccessModifierIndentation:
-  EnforcedStyle: outdent
-
-Layout/EmptyLinesAroundBlockBody:
+RSpec/ExampleLength:
   Enabled: false
 
-Layout/EmptyLinesAroundClassBody:
+RSpec/IdenticalEqualityAssertion:
   Enabled: false
 
-Layout/EmptyLinesAroundModuleBody:
-  Enabled: false
-
-Layout/LineLength:
-  Max: 120
-
-Lint/AmbiguousBlockAssociation:
-  Enabled: false
-
-Style/SpecialGlobalVars:
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
+RSpec/MultipleExpectations:
   Enabled: false
 
 Style/Documentation:
-  Enabled: false
-
-Style/BlockDelimiters:
-  Enabled: false
-
-Style/TrailingCommaInArrayLiteral:
-  EnforcedStyleForMultiline: consistent_comma
-
-Style/TrailingCommaInHashLiteral:
-  EnforcedStyleForMultiline: consistent_comma
-
-Metrics/BlockLength:
   Enabled: false

@@ -1,5 +1,6 @@
-module Enigma
+# frozen_string_literal: true
 
+module Enigma
   # The engima reflector is used to scramble the input. It takes input,
   # performs a substituion, then returns output. The scramling functions
   # such that if 'A' maps to 'B' then 'B' maps to 'A' (thus allowing for both
@@ -13,7 +14,6 @@ module Enigma
   #   ...
   #
   class Reflector
-
     module Mappings
       DEFAULT = %w[Y R U H Q S L D P X N G O K M I E B F Z C W V J A T].freeze
     end
@@ -32,6 +32,5 @@ module Enigma
 
       ALPHABET[(@mappings.index(letter) + @position) % ALPHABET.length]
     end
-
   end
 end

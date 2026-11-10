@@ -1,7 +1,8 @@
-require 'slop'
+# frozen_string_literal: true
+
+require "slop"
 
 module Enigma
-
   # A wrapper for command line interaction that encompasses option parsing,
   # version, help and execution. This class is instantiated from the binary.
   #
@@ -11,7 +12,7 @@ module Enigma
   #   cli.parse()
   #
   class CLI
-    BANNER = 'usage: enigma [options] ...'.freeze
+    BANNER = "usage: enigma [options] ..."
 
     def initialize(input: $stdin, output: $stdout)
       @machine = Machine.new
@@ -23,8 +24,8 @@ module Enigma
       Slop.parse(items) do |options|
         options.banner = BANNER
 
-        options.on('-h', '--help', 'help') { return help(options) }
-        options.on('-v', '--version', 'version') { return version }
+        options.on("-h", "--help", "help") { return help(options) }
+        options.on("-v", "--version", "version") { return version }
       end
 
       execute
@@ -43,6 +44,5 @@ module Enigma
     def version
       @output.puts(::Enigma::VERSION)
     end
-
   end
 end

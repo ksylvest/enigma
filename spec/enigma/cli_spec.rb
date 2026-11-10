@@ -1,33 +1,34 @@
-require 'spec_helper'
+# frozen_string_literal: true
+
+require "spec_helper"
 
 describe Enigma::CLI do
-  let(:input) { double('input') }
-  let(:output) { double('output') }
-  let(:cli) { Enigma::CLI.new(input: input, output: output) }
+  let(:input) { instance_double(IO, gets: "ENIGMA") }
+  let(:output) { instance_spy(IO) }
+  let(:cli) { described_class.new(input:, output:) }
 
-  describe '#parse' do
+  describe "#parse" do
     %w[-v --version].each do |option|
       it "supports '#{option}' option" do
-        expect(output).to receive(:puts).with Enigma::VERSION
         cli.parse([option])
+        expect(output).to have_received(:puts).with Enigma::VERSION
       end
     end
 
     %w[-h --help].each do |option|
       it "supports '#{option}'" do
-        expect(output).to receive(:puts).with <<~DEBUG
+        cli.parse([option])
+        expect(output).to have_received(:puts).with <<~DEBUG
           usage: enigma [options] ...
               -h, --help     help
               -v, --version  version
         DEBUG
-        cli.parse([option])
       end
     end
 
-    it 'defaults to mapping input to output' do
-      expect(input).to receive(:gets) { 'ENIGMA' }
-      expect(output).to receive(:puts).with('AJMKDD')
+    it "defaults to mapping input to output" do
       cli.parse([])
+      expect(output).to have_received(:puts).with("AJMKDD")
     end
   end
 end

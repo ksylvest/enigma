@@ -1,5 +1,6 @@
-module Enigma
+# frozen_string_literal: true
 
+module Enigma
   # The engima rotor has two contact points and can transform a letter going
   # forward or reverse. In addition the rotor supports rotating (offsetting)
   # and has a turnover point that will change other rotors
@@ -12,7 +13,6 @@ module Enigma
   #   rotor.rotate and return unless rotor.turnover?
   #
   class Rotor
-
     module Mappings
       DEFAULT = ALPHABET
       A = %w[E K M F L G D Q V Z N T O W Y H X U S P A I B R C J].freeze
@@ -22,9 +22,9 @@ module Enigma
 
     module Turnover
       DEFAULT = 0
-      A = Mappings::A.index('R')
-      B = Mappings::B.index('F')
-      C = Mappings::C.index('W')
+      A = Mappings::A.index("R")
+      B = Mappings::B.index("F")
+      C = Mappings::C.index("W")
     end
 
     module Position
@@ -74,6 +74,5 @@ module Enigma
         new(mappings: Mappings::C, turnover: Turnover::C),
       ]
     end
-
   end
 end
